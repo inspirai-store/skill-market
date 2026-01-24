@@ -57,6 +57,18 @@
       "keywords": ["wechat", "miniprogram", "debug", "screenshot", "automator", "ui-test"],
       "category": "development",
       "license": "MIT"
+    },
+    {
+      "name": "deploy",
+      "source": "./plugins/deploy-skill",
+      "description": "智能部署工具 - 自动检测部署策略，预检查、发布、监控一体化",
+      "version": "1.0.0",
+      "author": {
+        "name": "inspirai-store"
+      },
+      "keywords": ["deploy", "kubernetes", "docker", "helm", "devops", "ci-cd", "vercel", "compose"],
+      "category": "devops",
+      "license": "MIT"
     }
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "name": "deploy",
+  "version": "1.0.0",
+  "description": "智能部署工具 - 自动检测部署策略，预检查、发布、监控一体化",
+  "author": {
+    "name": "inspirai-store",
+    "url": "https://github.com/inspirai-store"
+  },
+  "repository": "https://github.com/inspirai-store/skill-market",
+  "license": "MIT",
+  "keywords": ["deploy", "kubernetes", "docker", "helm", "devops", "ci-cd", "vercel", "compose"]
+}

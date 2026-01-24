@@ -28,6 +28,7 @@ Then browse and install plugins:
 | [apispec](./plugins/apispec-skill/) | API 规范管理工具 - 跨项目 API 文档的初始化、更新、查询与搜索 |
 | [aliyun](./plugins/aliyun-skill/) | 阿里云资源管理 - ECS、OSS、DNS、RDS、ACK、ACR、SLB、AI |
 | [wxm](./plugins/wxm-skill/) | 微信小程序开发调试 - 编译、截图、日志、测试与 UI 迭代 |
+| [deploy](./plugins/deploy-skill/) | 智能部署 - 自动检测策略，预检查、发布、监控一体化 |
 
 ## Install a specific plugin
 
