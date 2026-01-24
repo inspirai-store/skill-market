@@ -29,6 +29,7 @@ Then browse and install plugins:
 | [aliyun](./plugins/aliyun-skill/) | 阿里云资源管理 - ECS、OSS、DNS、RDS、ACK、ACR、SLB、AI |
 | [wxm](./plugins/wxm-skill/) | 微信小程序开发调试 - 编译、截图、日志、测试与 UI 迭代 |
 | [deploy](./plugins/deploy-skill/) | 智能部署 - 自动检测策略，预检查、发布、监控一体化 |
+| [audit](./plugins/skill-audit/) | Skill 重叠分析 - 检测功能重复，辅助精简配置 |
 
 ## Install a specific plugin
 

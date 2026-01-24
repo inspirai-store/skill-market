@@ -1,0 +1,9 @@
+{
+  "name": "audit",
+  "version": "1.0.0",
+  "description": "Skill 重叠分析工具 - 检测已安装 skills/commands 的功能重复，辅助精简配置",
+  "author": {
+    "name": "inspirai-store"
+  },
+  "license": "MIT"
+}
