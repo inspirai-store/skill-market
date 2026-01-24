@@ -1,0 +1,12 @@
+{
+  "name": "gen",
+  "version": "2.0.0",
+  "description": "通用素材生成工具 - AI 图片/视频/音频/文本生成，支持多 Provider 配置",
+  "author": {
+    "name": "inspirai-store",
+    "url": "https://github.com/inspirai-store"
+  },
+  "repository": "https://github.com/inspirai-store/skill-market",
+  "license": "MIT",
+  "keywords": ["ai", "generate", "image", "video", "audio", "text", "gemini", "veo", "grok", "jimeng", "deepseek", "suno"]
+}
