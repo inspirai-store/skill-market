@@ -1,0 +1,26 @@
+{
+  "name": "skill-market",
+  "owner": {
+    "name": "inspirai-store",
+    "email": "alexxxiong@gmail.com"
+  },
+  "metadata": {
+    "description": "InspirAI creative tools for Claude Code - AI-powered asset generation and more",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "generate-asset",
+      "source": "./plugins/generate-asset",
+      "description": "AI Asset Generator - Uses Gemini to generate UI assets matching your project style. Supports icons, backgrounds, components, and illustrations.",
+      "version": "1.0.0",
+      "author": {
+        "name": "inspirai-store"
+      },
+      "keywords": ["ai", "image", "asset", "gemini", "ui", "design", "icon", "background", "generator"],
+      "category": "creative",
+      "license": "MIT"
+    }
+  ]
+}
