@@ -1,0 +1,12 @@
+{
+  "name": "apispec",
+  "version": "1.0.0",
+  "description": "API 规范管理工具 - 跨项目 API 文档的初始化、更新、查询与搜索",
+  "author": {
+    "name": "inspirai-store",
+    "url": "https://github.com/inspirai-store"
+  },
+  "repository": "https://github.com/inspirai-store/skill-market",
+  "license": "MIT",
+  "keywords": ["api", "spec", "documentation", "routes", "lookup", "search"]
+}

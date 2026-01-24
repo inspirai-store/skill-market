@@ -25,6 +25,7 @@ Then browse and install plugins:
 | Plugin | Description |
 |--------|-------------|
 | [generate-asset](./plugins/generate-asset/) | AI Asset Generator - Uses Gemini to generate UI assets matching your project style |
+| [apispec](./plugins/apispec-skill/) | API 规范管理工具 - 跨项目 API 文档的初始化、更新、查询与搜索 |
 
 ## Install a specific plugin
 
