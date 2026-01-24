@@ -1,0 +1,16 @@
+{
+  "name": "wxm-automator",
+  "version": "0.1.0",
+  "description": "WeChat MiniProgram Automator wrapper for wxm-skill",
+  "private": true,
+  "scripts": {
+    "screenshot": "node screenshot.js",
+    "navigate": "node navigate.js"
+  },
+  "dependencies": {
+    "miniprogram-automator": "^0.12.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

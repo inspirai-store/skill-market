@@ -1,0 +1,12 @@
+{
+  "name": "wxm",
+  "version": "1.0.0",
+  "description": "微信小程序开发调试工具 - 编译、模拟器控制、截图、日志、测试与 UI 迭代",
+  "author": {
+    "name": "inspirai-store",
+    "url": "https://github.com/inspirai-store"
+  },
+  "repository": "https://github.com/inspirai-store/skill-market",
+  "license": "MIT",
+  "keywords": ["wechat", "miniprogram", "debug", "screenshot", "automator", "ui-test"]
+}

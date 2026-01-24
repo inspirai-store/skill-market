@@ -33,6 +33,30 @@
       "keywords": ["api", "spec", "documentation", "routes", "lookup", "search"],
       "category": "development",
       "license": "MIT"
+    },
+    {
+      "name": "aliyun",
+      "source": "./plugins/aliyun-skill",
+      "description": "阿里云资源管理工具 - 支持 ECS、OSS、DNS、RDS、ACK、ACR、SLB、AI 等服务",
+      "version": "1.0.0",
+      "author": {
+        "name": "inspirai-store"
+      },
+      "keywords": ["aliyun", "cloud", "ecs", "oss", "dns", "rds", "kubernetes", "devops"],
+      "category": "cloud",
+      "license": "MIT"
+    },
+    {
+      "name": "wxm",
+      "source": "./plugins/wxm-skill",
+      "description": "微信小程序开发调试工具 - 编译、模拟器控制、截图、日志、测试与 UI 迭代",
+      "version": "1.0.0",
+      "author": {
+        "name": "inspirai-store"
+      },
+      "keywords": ["wechat", "miniprogram", "debug", "screenshot", "automator", "ui-test"],
+      "category": "development",
+      "license": "MIT"
     }
   ]
 }

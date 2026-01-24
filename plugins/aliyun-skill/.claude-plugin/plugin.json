@@ -1,0 +1,12 @@
+{
+  "name": "aliyun",
+  "version": "1.0.0",
+  "description": "阿里云资源管理工具 - 支持 ECS、OSS、DNS、RDS、ACK、ACR、SLB、AI 等服务",
+  "author": {
+    "name": "inspirai-store",
+    "url": "https://github.com/inspirai-store"
+  },
+  "repository": "https://github.com/inspirai-store/skill-market",
+  "license": "MIT",
+  "keywords": ["aliyun", "cloud", "ecs", "oss", "dns", "rds", "kubernetes", "devops"]
+}
