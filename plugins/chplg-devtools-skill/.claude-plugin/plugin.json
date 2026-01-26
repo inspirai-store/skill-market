@@ -8,10 +8,5 @@
   },
   "repository": "https://github.com/inspirai-store/skill-market",
   "license": "MIT",
-  "keywords": ["chrome", "extension", "devtools", "debug", "mcp", "native-messaging"],
-  "mcp": {
-    "server": "host/src/index.js",
-    "args": ["--mcp"]
-  },
-  "postInstall": "cd host && npm install && node install.js install"
+  "keywords": ["chrome", "extension", "devtools", "debug", "mcp", "native-messaging"]
 }
