@@ -1,0 +1,9 @@
+{
+  "name": "evo",
+  "version": "1.0.0",
+  "description": "技能自我进化 - 检测流程问题信号，生成分析报告，引导独立 session 处理改进",
+  "author": {
+    "name": "inspirai-store"
+  },
+  "license": "MIT"
+}

@@ -30,6 +30,7 @@ Then browse and install plugins:
 | [wxm](./plugins/wxm-skill/) | 微信小程序开发调试 - 编译、截图、日志、测试与 UI 迭代 |
 | [deploy](./plugins/deploy-skill/) | 智能部署 - 自动检测策略，预检查、发布、监控一体化 |
 | [audit](./plugins/skill-audit/) | Skill 重叠分析 - 检测功能重复，辅助精简配置 |
+| [evo](./plugins/evo-skill/) | 技能自我进化 - 检测流程问题信号，生成报告，引导改进 |
 
 ## Install a specific plugin
 

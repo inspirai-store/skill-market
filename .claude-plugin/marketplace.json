@@ -81,6 +81,18 @@
       "keywords": ["audit", "overlap", "analyze", "deduplicate", "skill-management", "cleanup"],
       "category": "utility",
       "license": "MIT"
+    },
+    {
+      "name": "evo",
+      "source": "./plugins/evo-skill",
+      "description": "技能自我进化 - 检测流程问题信号（重复试错、流程中断、代码翻动），生成分析报告，引导改进",
+      "version": "1.0.0",
+      "author": {
+        "name": "inspirai-store"
+      },
+      "keywords": ["evolution", "workflow", "analysis", "improvement", "debugging", "monitoring", "self-healing"],
+      "category": "utility",
+      "license": "MIT"
     }
   ]
 }
