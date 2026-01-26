@@ -93,6 +93,18 @@
       "keywords": ["evolution", "workflow", "analysis", "improvement", "debugging", "monitoring", "self-healing"],
       "category": "utility",
       "license": "MIT"
+    },
+    {
+      "name": "chplg-devtools",
+      "source": "./plugins/chplg-devtools-skill",
+      "description": "Chrome 扩展调试工具 - 收集日志、错误、网络请求，通过 MCP 在 Claude Code 中查询",
+      "version": "1.0.0",
+      "author": {
+        "name": "alexxxiong"
+      },
+      "keywords": ["chrome", "extension", "devtools", "debug", "mcp", "native-messaging"],
+      "category": "development",
+      "license": "MIT"
     }
   ]
 }
