@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Chplg DevTools",
+  "version": "1.0.0",
+  "description": "Chrome extension debugger - collect logs, errors, network and performance data",
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "32": "assets/icons/icon-32.png",
+    "48": "assets/icons/icon-48.png",
+    "128": "assets/icons/icon-128.png"
+  },
+  "permissions": [
+    "debugger",
+    "management",
+    "storage",
+    "tabs",
+    "nativeMessaging"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+  "devtools_page": "src/devtools/devtools.html"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "chplg-devtools",
+  "version": "1.0.0",
+  "description": "Chrome 扩展调试工具 - 收集日志、错误、网络请求，通过 MCP 在 Claude Code 中查询",
+  "author": {
+    "name": "alexxxiong",
+    "url": "https://github.com/alexxxiong"
+  },
+  "repository": "https://github.com/inspirai-store/skill-market",
+  "license": "MIT",
+  "keywords": ["chrome", "extension", "devtools", "debug", "mcp", "native-messaging"],
+  "mcp": {
+    "server": "host/src/index.js",
+    "args": ["--mcp"]
+  },
+  "postInstall": "cd host && npm install && node install.js install"
+}
