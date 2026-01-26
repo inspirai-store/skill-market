@@ -1,0 +1,21 @@
+{
+  "name": "chplg-devtools-host",
+  "version": "1.0.0",
+  "description": "Native Messaging Host + MCP Server for Chplg DevTools",
+  "type": "module",
+  "bin": {
+    "chplg-devtools-host": "./src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "install-host": "node install.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "",
+  "license": "MIT"
+}
