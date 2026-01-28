@@ -105,6 +105,18 @@
       "keywords": ["chrome", "extension", "devtools", "debug", "mcp", "native-messaging"],
       "category": "development",
       "license": "MIT"
+    },
+    {
+      "name": "bp",
+      "source": "./plugins/bp-skill",
+      "description": "最佳实践管理 - 记录验证通过的解决方案，跨项目复用，避免重复踩坑",
+      "version": "1.0.0",
+      "author": {
+        "name": "inspirai-store"
+      },
+      "keywords": ["best-practices", "knowledge", "solution", "reuse", "capture", "documentation"],
+      "category": "utility",
+      "license": "MIT"
     }
   ]
 }
