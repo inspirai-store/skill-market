@@ -1,0 +1,9 @@
+{
+  "name": "bp",
+  "version": "1.0.0",
+  "description": "最佳实践管理 - 记录验证通过的解决方案，跨项目复用",
+  "author": {
+    "name": "inspirai-store"
+  },
+  "license": "MIT"
+}
