@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "comfy-pilot": {
+      "command": "python",
+      "args": ["D:/ComfyUI-aki-v3/ComfyUI/custom_nodes/comfy-pilot/mcp_server.py"],
+      "env": {
+        "COMFYUI_HOST": "127.0.0.1",
+        "COMFYUI_PORT": "8188"
+      }
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "v1-5-pruned-emaonly.safetensors"
+    }
+  },
+  "2": {
+    "class_type": "ADE_AnimateDiffLoaderWithContext",
+    "inputs": {
+      "model": ["1", 0],
+      "motion_module": "mm_sd15_v3.safetensors",
+      "context_options": ["3", 0]
+    }
+  },
+  "3": {
+    "class_type": "ADE_StandardStaticContextOptions",
+    "inputs": {
+      "context_length": 16,
+      "context_overlap": 4
+    }
+  },
+  "4": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "input_image.png"
+    }
+  },
+  "5": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": ["4", 0],
+      "vae": ["1", 2]
+    }
+  },
+  "6": {
+    "class_type": "RepeatLatentBatch",
+    "inputs": {
+      "samples": ["5", 0],
+      "amount": 16
+    }
+  },
+  "7": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "a person smiling and waving hand, natural movement, smooth motion",
+      "clip": ["1", 1]
+    }
+  },
+  "8": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "blurry, distorted, low quality, static, no movement, watermark",
+      "clip": ["1", 1]
+    }
+  },
+  "9": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": ["2", 0],
+      "positive": ["7", 0],
+      "negative": ["8", 0],
+      "latent_image": ["6", 0],
+      "seed": 42,
+      "steps": 20,
+      "cfg": 7.5,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 0.65
+    }
+  },
+  "10": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": ["9", 0],
+      "vae": ["1", 2]
+    }
+  },
+  "11": {
+    "class_type": "VHS_VideoCombine",
+    "inputs": {
+      "images": ["10", 0],
+      "frame_rate": 8,
+      "loop_count": 0,
+      "filename_prefix": "animatediff_img2video",
+      "format": "video/h264-mp4",
+      "pingpong": false,
+      "save_output": true
+    }
+  }
+}
