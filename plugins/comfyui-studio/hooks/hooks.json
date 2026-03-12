@@ -1,14 +1,17 @@
 {
-  "PostToolUse": [
-    {
-      "matcher": "mcp__comfy-pilot__run",
-      "hooks": [
-        {
-          "type": "prompt",
-          "prompt": "检查 Comfy Pilot run 的执行结果。如果返回包含 'CUDA out of memory'、'OOM'、'NodeNotFound'、'Error' 等错误信息，读取 .comfyui-studio/inventory.json 中的硬件信息，然后启动 comfy-debugger agent 进行诊断并输出修复建议。如果执行成功，提示用户查看输出图像或视频。",
-          "timeout": 15
-        }
-      ]
-    }
-  ]
+  "description": "ComfyUI Studio 工作流执行后自动检查结果",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "mcp__comfy-pilot__run",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "检查 Comfy Pilot run 的执行结果。如果返回包含 'CUDA out of memory'、'OOM'、'NodeNotFound'、'Error' 等错误信息，读取 .comfyui-studio/inventory.json 中的硬件信息，然后启动 comfy-debugger agent 进行诊断并输出修复建议。如果执行成功，提示用户查看输出图像或视频。",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
 }
