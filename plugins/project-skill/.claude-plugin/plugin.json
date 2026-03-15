@@ -1,0 +1,12 @@
+{
+  "name": "project",
+  "version": "0.1.0",
+  "description": "多 Agent 项目管理 - 从想法到立项，自动在 Discord 频道创建项目线程并分配 Agent 任务",
+  "author": {
+    "name": "inspirai-store",
+    "url": "https://github.com/inspirai-store"
+  },
+  "repository": "https://github.com/inspirai-store/skill-market",
+  "license": "MIT",
+  "keywords": ["project", "discord", "multi-agent", "team", "thread", "openclaw"]
+}
