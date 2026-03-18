@@ -129,6 +129,18 @@
       "keywords": ["comfyui", "ai", "image", "video", "voice", "lora", "stable-diffusion", "flux", "wan"],
       "category": "creative",
       "license": "MIT"
+    },
+    {
+      "name": "story",
+      "source": "./plugins/story-skill",
+      "description": "小说分析与短剧改编 - 结构化梗概提取（人物心理/事件链/伏笔网/吸引力内核）+ 多品类短剧剧本改编（参数化 POV/多时长结构/角色表演设计）",
+      "version": "1.0.0",
+      "author": {
+        "name": "inspirai-store"
+      },
+      "keywords": ["novel", "story", "screenplay", "adaptation", "short-drama", "character", "narrative"],
+      "category": "creative",
+      "license": "MIT"
     }
   ]
 }
