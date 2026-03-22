@@ -1,0 +1,12 @@
+{
+  "name": "browser-fetch",
+  "version": "0.1.0",
+  "description": "指纹浏览器网页抓取 - 使用 Camoufox 反检测浏览器访问有反爬保护的网站",
+  "author": {
+    "name": "inspirai-store",
+    "url": "https://github.com/inspirai-store"
+  },
+  "repository": "https://github.com/inspirai-store/skill-market",
+  "license": "MIT",
+  "keywords": ["browser", "fetch", "scraper", "camoufox", "anti-bot", "fingerprint"]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "web-reader",
+  "version": "0.2.0",
+  "description": "智能网页阅读器 - 抓取文章/下载视频并归档，支持分析、摘要、衍生",
+  "author": {
+    "name": "inspirai-store",
+    "url": "https://github.com/inspirai-store"
+  },
+  "repository": "https://github.com/inspirai-store/skill-market",
+  "license": "MIT",
+  "keywords": ["web", "reader", "scraper", "article", "video", "archive", "weixin", "feishu", "bilibili"]
+}
