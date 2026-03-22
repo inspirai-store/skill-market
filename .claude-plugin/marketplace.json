@@ -141,6 +141,30 @@
       "keywords": ["novel", "story", "screenplay", "adaptation", "short-drama", "character", "narrative"],
       "category": "creative",
       "license": "MIT"
+    },
+    {
+      "name": "web-reader",
+      "source": "./plugins/web-reader-skill",
+      "description": "智能网页阅读器 - 抓取文章/下载视频并归档，支持分析、摘要、衍生，覆盖微信/飞书/知乎/B站等平台",
+      "version": "0.2.0",
+      "author": {
+        "name": "inspirai-store"
+      },
+      "keywords": ["web", "reader", "scraper", "article", "video", "archive", "weixin", "feishu", "bilibili"],
+      "category": "utility",
+      "license": "MIT"
+    },
+    {
+      "name": "browser-fetch",
+      "source": "./plugins/browser-fetch-skill",
+      "description": "指纹浏览器网页抓取 - 使用 Camoufox 反检测浏览器访问有反爬保护的网站，支持 Profile 登录态管理",
+      "version": "0.1.0",
+      "author": {
+        "name": "inspirai-store"
+      },
+      "keywords": ["browser", "fetch", "scraper", "camoufox", "anti-bot", "fingerprint"],
+      "category": "utility",
+      "license": "MIT"
     }
   ]
 }

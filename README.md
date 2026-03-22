@@ -32,6 +32,8 @@ Then browse and install plugins:
 | [audit](./plugins/skill-audit/) | Skill 重叠分析 - 检测功能重复，辅助精简配置 |
 | [evo](./plugins/evo-skill/) | 技能自我进化 - 检测流程问题信号，生成报告，引导改进 |
 | [chplg-devtools](./plugins/chplg-devtools-skill/) | Chrome 扩展调试 - 收集日志、错误、网络请求，MCP 集成查询 |
+| [web-reader](./plugins/web-reader-skill/) | 智能网页阅读器 - 抓取文章/下载视频并归档，支持微信/飞书/知乎/B站等 |
+| [browser-fetch](./plugins/browser-fetch-skill/) | 指纹浏览器抓取 - Camoufox 反检测浏览器，绕过反爬保护 |
 
 ## Install a specific plugin
 
