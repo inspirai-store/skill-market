@@ -165,6 +165,18 @@
       "keywords": ["browser", "fetch", "scraper", "camoufox", "anti-bot", "fingerprint"],
       "category": "utility",
       "license": "MIT"
+    },
+    {
+      "name": "dreamina",
+      "source": "./plugins/dreamina-skill",
+      "description": "Dreamina（即梦）CLI 技能 - 通过 dreamina CLI 进行图片和视频生成，支持文生图、图生视频、多帧生视频等工作流",
+      "version": "1.0.0",
+      "author": {
+        "name": "inspirai-store"
+      },
+      "keywords": ["dreamina", "即梦", "image-generation", "video-generation", "ai-art", "seedance"],
+      "category": "creative",
+      "license": "MIT"
     }
   ]
 }

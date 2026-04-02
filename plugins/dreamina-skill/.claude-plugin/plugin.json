@@ -1,0 +1,12 @@
+{
+  "name": "dreamina",
+  "description": "Dreamina（即梦）CLI 技能 - 通过 dreamina CLI 进行图片和视频生成，支持文生图、图生视频、多帧生视频等工作流",
+  "author": {
+    "name": "inspirai-store",
+    "url": "https://github.com/inspirai-store"
+  },
+  "version": "1.0.0",
+  "repository": "https://github.com/inspirai-store/skill-market",
+  "license": "MIT",
+  "keywords": ["dreamina", "即梦", "image-generation", "video-generation", "ai-art", "seedance"]
+}
