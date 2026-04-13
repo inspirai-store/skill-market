@@ -24,9 +24,9 @@ else
   fi
 fi
 
-# --- Check .inspirai/ project state ---
+# --- Check inspirai/ project state ---
 PROJECT_INIT="false"
-if [[ -d ".inspirai" ]]; then
+if [[ -d "inspirai" ]]; then
   PROJECT_INIT="true"
 fi
 

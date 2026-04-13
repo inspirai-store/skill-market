@@ -2,9 +2,9 @@
 name: inspirai-dev
 description: >
   This skill should be used when the user says "按照 inspirai 模式开发", "inspirai mode",
-  "用 inspirai 流程", or when starting a new feature/project that needs structured
-  multi-tool workflow orchestration. Defines the development workflow splitting work
-  between Claude Code (design/backend/deploy) and Gemini CLI (frontend).
+  "用 inspirai 流程", "inspirai init", or when starting a new feature/project that needs
+  structured multi-tool workflow orchestration. Defines the development workflow splitting
+  work between Claude Code (design/backend/deploy) and Gemini CLI (frontend).
 ---
 
 # Inspirai Development Mode
@@ -12,57 +12,83 @@ description: >
 Structured workflow that separates **decision** (current CLI orchestrates) from
 **execution** (task routed to the right CLI).
 
-## Bootstrap Sequence
+## CLI Tool
 
-Run these scripts in order on first use. Each is cached/idempotent after first pass.
+`inspirai` CLI provides project-level commands, similar to openspec:
 
 ```bash
-# 1. Detect current CLI environment
-ENV_JSON=$(bash ${CLAUDE_PLUGIN_ROOT}/scripts/detect-env.sh)
+# Install (symlink to PATH)
+ln -sf ${CLAUDE_PLUGIN_ROOT}/scripts/inspirai.sh /usr/local/bin/inspirai
 
-# 2. Environment precheck (cached after pass, macOS only)
-bash ${CLAUDE_PLUGIN_ROOT}/scripts/precheck.sh
-
-# 3. Initialize project (creates .inspirai/ if missing)
-bash ${CLAUDE_PLUGIN_ROOT}/scripts/init-project.sh
+# Or use directly
+bash ${CLAUDE_PLUGIN_ROOT}/scripts/inspirai.sh <command>
 ```
 
-Parse `ENV_JSON` to determine routing. Key fields:
-- `platform` — current CLI (`claude-code`, `gemini-cli`, `cursor`, `copilot-cli`)
-- `can_execute` — task types this CLI handles directly
-- `should_handoff` — task types to delegate via handoff file
-- `handoff_target` — which CLI receives the handoff
+### Commands
+
+```bash
+inspirai init [--force]       # Initialize inspirai/ in current project
+inspirai status               # Show environment + project state
+inspirai env                  # Detect CLI environment (JSON output)
+inspirai handoff <title>      # Create handoff markdown file
+inspirai archive <name>       # Archive completed handoff
+```
+
+## Bootstrap Sequence
+
+On first use in a project:
+
+```bash
+# 1. Detect CLI environment
+bash ${CLAUDE_PLUGIN_ROOT}/scripts/inspirai.sh env
+
+# 2. Precheck tools (cached after pass, macOS only)
+bash ${CLAUDE_PLUGIN_ROOT}/scripts/precheck.sh
+
+# 3. Initialize project directory
+bash ${CLAUDE_PLUGIN_ROOT}/scripts/inspirai.sh init
+```
+
+Creates `inspirai/` at project root:
+
+```
+inspirai/
+├── config.yaml        # Routing config (commit this)
+├── state.json         # Runtime state (gitignored)
+└── handoffs/          # Cross-CLI task handoffs
+    └── archive/       # Completed handoffs
+```
 
 ## Decision vs Execution
 
 | Layer | Rule |
 |-------|------|
-| **Decision** | Whichever CLI the user is in right now — it orchestrates |
+| **Decision** | Whichever CLI the user is in — it orchestrates |
 | **Execution: backend/design/deploy/infra** | Always Claude Code |
 | **Execution: frontend** | Always Gemini CLI |
 | **Execution: UI mockup** | Always Pencil MCP (before any frontend code) |
 
 ### When running in Claude Code
 
-- Backend/design/deploy/infra tasks → execute directly
-- Frontend tasks → generate handoff to `.inspirai/handoffs/`, tell user to open Gemini CLI
+- Backend/design/deploy/infra → execute directly
+- Frontend → `inspirai handoff <title>`, tell user to open Gemini CLI
 
 ### When running in Gemini CLI
 
-- Frontend tasks → execute directly (read handoff from `.inspirai/handoffs/` if available)
-- Backend/design/deploy tasks → generate handoff, tell user to open Claude Code
+- Frontend → execute directly (check `inspirai/handoffs/` for context)
+- Backend/design/deploy → `inspirai handoff <title>`, tell user to open Claude Code
 
 ## Workflow Phases
 
 ```
-Precheck → Brainstorm → Design (Pencil) → Plan → Implement → Deploy
+inspirai init → Brainstorm → Design (Pencil) → Plan → Implement → Deploy
 ```
 
 ### Phase 1: Brainstorm & Propose
 
 Invoke `superpowers:brainstorming` to explore requirements.
 
-**Decision gate:** Check `can_execute` from detect-env. If task type is in
+**Decision gate:** Check `can_execute` from `inspirai env`. If task type is in
 `should_handoff`, generate a handoff file instead of executing.
 
 ### Phase 2: UI Design with Pencil
@@ -78,9 +104,7 @@ For any task involving UI/interaction:
 
 ### Phase 3: Plan & Architect
 
-Invoke `superpowers:writing-plans` to produce an implementation plan.
-
-Split into tasks tagged by executor:
+Invoke `superpowers:writing-plans`. Split tasks by executor:
 - `[claude-code]` — backend APIs, DB migrations, deployment, infra
 - `[gemini-cli]` — frontend components, pages, styling
 
@@ -91,41 +115,21 @@ Split into tasks tagged by executor:
 - `superpowers:test-driven-development` for backend
 - `superpowers:verification-before-completion` before done
 
-**Tasks matching `should_handoff`** → generate handoff markdown:
+**Tasks matching `should_handoff`** → generate handoff:
 
 ```bash
-# Handoff file goes to .inspirai/handoffs/
-# Format: YYYY-MM-DD-<brief-topic>.md
+bash ${CLAUDE_PLUGIN_ROOT}/scripts/inspirai.sh handoff <title>
+# Then fill in the generated markdown template
 ```
 
-Handoff file template:
-
-```markdown
-# Handoff: <title>
-- **From:** <current platform>
-- **To:** <handoff_target>
-- **Date:** <ISO date>
-
-## Context
-<what was done so far, decisions made>
-
-## Task
-<what needs to be implemented>
-
-## Design References
-<Pencil .pen file paths, screenshots, API contracts>
-
-## Acceptance Criteria
-<how to verify the work is correct>
-```
-
-Tell user: "已生成交接文件 `.inspirai/handoffs/<filename>.md`，请在 `<handoff_target>` 中查看并执行。"
+Tell user: "已生成交接文件 `inspirai/handoffs/<filename>.md`，请在 `<handoff_target>` 中查看并执行。"
 
 ### Phase 5: Review & Deploy
 
 1. `superpowers:requesting-code-review` or `coderabbit:review`
 2. Follow CLAUDE.md container/K8s conventions
 3. `superpowers:verification-before-completion`
+4. Archive completed handoffs: `inspirai archive <name>`
 
 ## Quick Reference
 
@@ -135,19 +139,10 @@ Tell user: "已生成交接文件 `.inspirai/handoffs/<filename>.md`，请在 `<
 | UI design | Pencil MCP → export | read Pencil export from handoff |
 | Backend task | execute directly | generate handoff → tell user |
 | Frontend task | generate handoff → tell user | execute directly |
-| Full-stack | execute backend + handoff frontend | execute frontend from handoff |
+| Full-stack | backend + handoff frontend | frontend from handoff |
 | Bug fix | `superpowers:systematic-debugging` | fix directly if frontend |
 
-## Commands
+## Slash Commands
 
-- `/use-inspirai` — Detect env → precheck → init → enter workflow
+- `/use-inspirai` — Full bootstrap: detect → precheck → init → workflow
 - `/use-inspirai --force` — Force re-run all checks
-
-## Scripts
-
-| Script | Purpose |
-|--------|---------|
-| `detect-env.sh` | Detect CLI platform, output routing JSON |
-| `precheck.sh` | Tool chain check (cached) |
-| `init-project.sh` | Create `.inspirai/` in project root |
-| `check-workflow.sh` | Project state check |
