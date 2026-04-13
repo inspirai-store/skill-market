@@ -1,6 +1,6 @@
 {
   "name": "inspirai-mode",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Inspirai 开发模式 - Claude Code 设计/后端/部署 + Gemini CLI 前端，Pencil 交互稿，superpowers + openspec 工作流",
   "author": {
     "name": "inspirai-store",
