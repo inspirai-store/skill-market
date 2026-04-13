@@ -34,6 +34,7 @@ Then browse and install plugins:
 | [chplg-devtools](./plugins/chplg-devtools-skill/) | Chrome 扩展调试 - 收集日志、错误、网络请求，MCP 集成查询 |
 | [web-reader](./plugins/web-reader-skill/) | 智能网页阅读器 - 抓取文章/下载视频并归档，支持微信/飞书/知乎/B站等 |
 | [browser-fetch](./plugins/browser-fetch-skill/) | 指纹浏览器抓取 - Camoufox 反检测浏览器，绕过反爬保护 |
+| [inspirai-mode](./plugins/inspirai-mode/) | 多 CLI 协作开发模式 - Claude Code 后端/部署 + Gemini CLI 前端，Pencil 交互稿，handoff 交接 |
 
 ## Install a specific plugin
 
