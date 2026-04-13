@@ -9,8 +9,19 @@ description: >
 
 # Inspirai Development Mode
 
-Structured development workflow that orchestrates Claude Code, Gemini CLI, and Pencil
-for full-stack product delivery.
+Structured workflow orchestrating Claude Code, Gemini CLI, and Pencil for full-stack delivery.
+
+## Prerequisites
+
+Run environment precheck before first use (cached after passing):
+
+```bash
+bash ${CLAUDE_PLUGIN_ROOT}/scripts/precheck.sh
+```
+
+If output is `PRECHECK_FAIL`, display the missing tool install instructions and stop.
+If output is `platform_unsupported`, inform: "Inspirai dev mode 目前仅支持 macOS"。
+If output is `PRECHECK_OK`, proceed to workflow. Re-check with `--force` flag.
 
 ## Tool Division
 
@@ -23,79 +34,73 @@ for full-stack product delivery.
 ## Workflow
 
 ```
-1. Brainstorm → 2. Design (Pencil) → 3. Plan → 4. Implement → 5. Deploy
+Precheck → Brainstorm → Design (Pencil) → Plan → Implement → Deploy
 ```
 
 ### Phase 1: Brainstorm & Propose
 
-Invoke `superpowers:brainstorming` to explore requirements, then create an openspec change:
+Invoke `superpowers:brainstorming` to explore requirements, then create an openspec change.
 
-```bash
-# Claude Code creates the proposal
-# Use: opsx:propose or openspec-propose
-```
-
-**Decision gate:** If the task is frontend-heavy, generate a complete openspec proposal
+**Decision gate:** If frontend-heavy, generate a complete openspec proposal
 and instruct the user to hand it to Gemini CLI for `apply`.
 
 ### Phase 2: UI Design with Pencil
 
 For any task involving UI/interaction:
 
-1. Open or create a `.pen` file via Pencil MCP (`get_editor_state` → `open_document`)
-2. Design the interface using `batch_design` operations
+1. Open or create `.pen` file via Pencil MCP (`get_editor_state` → `open_document`)
+2. Design with `batch_design` operations
 3. Review with `get_screenshot` and `batch_get`
-4. Iterate until design is approved
-5. Export final specs for frontend handoff
+4. Iterate until approved
+5. Export specs for frontend handoff
 
-**Rule:** Always design in Pencil before writing frontend code. Never skip to code.
+**Rule:** Always design in Pencil before frontend code. Never skip to code.
 
 ### Phase 3: Plan & Architect
 
 Invoke `superpowers:writing-plans` to produce an implementation plan.
 
-Split the plan into:
-- **Claude Code tasks** — backend APIs, DB migrations, deployment configs, infra
-- **Gemini CLI tasks** — frontend components, pages, styling (delivered via openspec)
+Split into:
+- **Claude Code tasks** — backend APIs, DB migrations, deployment, infra
+- **Gemini CLI tasks** — frontend components, pages, styling (via openspec)
 
 ### Phase 4: Implement
 
-**For Claude Code tasks** (backend/infra/deploy):
+**Claude Code tasks** (backend/infra/deploy):
 
-1. Invoke `superpowers:executing-plans` to work through the plan
-2. Use `superpowers:test-driven-development` for backend code
-3. Use `superpowers:verification-before-completion` before claiming done
+1. `superpowers:executing-plans` to work through the plan
+2. `superpowers:test-driven-development` for backend code
+3. `superpowers:verification-before-completion` before claiming done
 
-**For Gemini CLI tasks** (frontend):
+**Gemini CLI tasks** (frontend):
 
-1. Run `opsx:propose` to generate a complete change proposal with:
-   - Pencil design references
-   - Component specs
-   - API contracts from backend work
-2. Tell the user: "前端部分已生成 openspec proposal，请在 Gemini CLI 中执行 `apply`"
+1. `opsx:propose` to generate a change proposal with Pencil refs + API contracts
+2. Tell user: "前端部分已生成 openspec proposal，请在 Gemini CLI 中执行 apply"
 
 ### Phase 5: Review & Deploy
 
-1. Invoke `superpowers:requesting-code-review` or `coderabbit:review`
-2. For deployment, follow CLAUDE.md container/K8s conventions
-3. Invoke `superpowers:verification-before-completion` for final check
+1. `superpowers:requesting-code-review` or `coderabbit:review`
+2. Follow CLAUDE.md container/K8s conventions for deployment
+3. `superpowers:verification-before-completion` for final check
 
-## Quick Reference: Skill Routing
+## Quick Reference
 
 | Situation | Action |
 |-----------|--------|
-| New feature request | `superpowers:brainstorming` → this workflow |
-| UI/interaction needed | Pencil MCP first, then propose |
-| Backend-only task | Claude Code handles end-to-end |
-| Frontend-only task | `opsx:propose` → hand to Gemini CLI |
-| Full-stack task | Split: Claude Code backend + Pencil design + propose frontend to Gemini |
+| New feature | `superpowers:brainstorming` → this workflow |
+| UI needed | Pencil MCP first, then propose |
+| Backend-only | Claude Code end-to-end |
+| Frontend-only | `opsx:propose` → Gemini CLI |
+| Full-stack | Split: CC backend + Pencil + propose frontend to Gemini |
 | Bug fix | `superpowers:systematic-debugging` (skip this workflow) |
 | Code complete | `superpowers:verification-before-completion` |
 
+## Commands
+
+- `/use-inspirai` — Explicit entry point, runs precheck then enters workflow
+- `/use-inspirai --force` — Force re-run environment precheck
+
 ## Scripts
 
-Run the workflow check script to validate current project state:
-
-```bash
-bash ${CLAUDE_PLUGIN_ROOT}/scripts/check-workflow.sh
-```
+- `${CLAUDE_PLUGIN_ROOT}/scripts/precheck.sh` — Environment precheck (cached)
+- `${CLAUDE_PLUGIN_ROOT}/scripts/check-workflow.sh` — Project state check
