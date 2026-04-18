@@ -177,6 +177,18 @@
       "keywords": ["dreamina", "即梦", "image-generation", "video-generation", "ai-art", "seedance"],
       "category": "creative",
       "license": "MIT"
+    },
+    {
+      "name": "inspirai-mode",
+      "source": "./plugins/inspirai-mode",
+      "description": "多 CLI 协作开发模式 - Claude Code 后端/部署 + Gemini CLI 前端，Pencil 交互稿，handoff 交接，superpowers + openspec 工作流",
+      "version": "0.4.0",
+      "author": {
+        "name": "inspirai-store"
+      },
+      "keywords": ["inspirai", "workflow", "pencil", "openspec", "superpowers", "gemini", "handoff", "multi-cli"],
+      "category": "workflow",
+      "license": "MIT"
     }
   ]
 }
