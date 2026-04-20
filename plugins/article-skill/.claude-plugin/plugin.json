@@ -1,0 +1,13 @@
+{
+  "name": "article",
+  "description": "公众号爆款写作系统 - 风格自适应 / 热点抓取 / 完整创作工作流 / AI 文本去人工化",
+  "author": {
+    "name": "inspirai-store",
+    "url": "https://github.com/inspirai-store"
+  },
+  "version": "1.0.0",
+  "repository": "https://github.com/inspirai-store/skill-market",
+  "license": "MIT",
+  "keywords": ["article", "writing", "wechat", "公众号", "爆款", "content-creation", "hotspot", "de-ai", "copywriting"],
+  "upstream": "https://github.com/TanShilongMario/ArticleSkill"
+}

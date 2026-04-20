@@ -189,6 +189,18 @@
       "keywords": ["inspirai", "workflow", "pencil", "openspec", "superpowers", "gemini", "handoff", "multi-cli"],
       "category": "workflow",
       "license": "MIT"
+    },
+    {
+      "name": "article",
+      "source": "./plugins/article-skill",
+      "description": "公众号爆款写作系统 - 风格自适应 / 热点抓取 / 完整创作工作流 / AI 文本去人工化",
+      "version": "1.0.0",
+      "author": {
+        "name": "inspirai-store"
+      },
+      "keywords": ["article", "writing", "wechat", "公众号", "爆款", "content-creation", "hotspot", "de-ai", "copywriting"],
+      "category": "creative",
+      "license": "MIT"
     }
   ]
 }
