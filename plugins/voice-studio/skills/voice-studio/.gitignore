@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+node_modules/
+.venv/
+credentials.env
+custom-voices.json
+reference-voice-authorization.json
+preset.json
+library/
+cache/
+server.log

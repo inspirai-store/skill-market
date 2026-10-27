@@ -213,6 +213,18 @@
       "keywords": ["credentials", "secrets", "keychain", "environment", "local", "cross-platform"],
       "category": "utility",
       "license": "MIT"
+    },
+    {
+      "name": "voice-studio",
+      "source": "./plugins/voice-studio",
+      "description": "声音试听与配音 — 比较百炼和 MiniMax 音色、保存常用声线、复用缓存并导出旁白",
+      "version": "1.0.0",
+      "author": {
+        "name": "inspirai-store"
+      },
+      "keywords": ["tts", "voice", "narration", "audio", "bailian", "minimax", "local"],
+      "category": "creative",
+      "license": "MIT"
     }
   ]
 }

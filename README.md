@@ -36,6 +36,7 @@ Then browse and install plugins:
 | [browser-fetch](./plugins/browser-fetch-skill/) | 指纹浏览器抓取 - Camoufox 反检测浏览器，绕过反爬保护 |
 | [inspirai-mode](./plugins/inspirai-mode/) | 多 CLI 协作开发模式 - Claude Code 后端/部署 + Gemini CLI 前端，Pencil 交互稿，handoff 交接 |
 | [secure-input](./plugins/secure-input/) | 本地安全输入 - 弹框接收密钥，直接投递到进程、配置或网页，AI 只接收状态 |
+| [voice-studio](./plugins/voice-studio/) | 声音试听与配音 - 百炼 / MiniMax 音色筛选、A/B 比较、常用声线、缓存与音频导出 |
 
 ## Install a specific plugin
 

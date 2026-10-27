@@ -1,0 +1,4 @@
+interface:
+  display_name: "声音试听与配音"
+  short_description: "试听百炼与 MiniMax 音色，保存常用声线并复用生成旁白配音"
+  default_prompt: "使用 $voice-studio 打开试听台，挑选合适的声线并生成配音。"
