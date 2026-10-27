@@ -1,0 +1,19 @@
+{
+  "name": "secure-input",
+  "version": "1.0.0",
+  "description": "本地安全输入 — 弹框接收密钥并直接投递到进程、配置文件或网页，AI 只接收状态",
+  "author": {
+    "name": "inspirai-store",
+    "url": "https://github.com/inspirai-store"
+  },
+  "repository": "https://github.com/inspirai-store/skill-market",
+  "license": "MIT",
+  "keywords": [
+    "credentials",
+    "secrets",
+    "keychain",
+    "environment",
+    "local",
+    "cross-platform"
+  ]
+}

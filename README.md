@@ -35,6 +35,7 @@ Then browse and install plugins:
 | [web-reader](./plugins/web-reader-skill/) | 智能网页阅读器 - 抓取文章/下载视频并归档，支持微信/飞书/知乎/B站等 |
 | [browser-fetch](./plugins/browser-fetch-skill/) | 指纹浏览器抓取 - Camoufox 反检测浏览器，绕过反爬保护 |
 | [inspirai-mode](./plugins/inspirai-mode/) | 多 CLI 协作开发模式 - Claude Code 后端/部署 + Gemini CLI 前端，Pencil 交互稿，handoff 交接 |
+| [secure-input](./plugins/secure-input/) | 本地安全输入 - 弹框接收密钥，直接投递到进程、配置或网页，AI 只接收状态 |
 
 ## Install a specific plugin
 

@@ -1,0 +1,6 @@
+interface:
+  display_name: "安全输入"
+  short_description: "通过本地弹框接收凭据并直接投递到指定目标，密钥原文不经过对话和工具输出"
+  default_prompt: "使用 $secure-input 安全填写当前任务需要的密钥。"
+policy:
+  allow_implicit_invocation: true
