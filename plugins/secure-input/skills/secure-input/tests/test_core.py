@@ -101,6 +101,62 @@ class CoreTests(unittest.TestCase):
         self.assertEqual(ui.captures, 1)
         self.assertFalse((self.root / "other.json").exists())
 
+    def test_explicit_system_save_reused_with_one_shot_request(self):
+        class SaveUI(FakeUI):
+            def capture(self, request, existing, policies, vault_available):
+                values, _ = super().capture(request, existing, policies, vault_available)
+                return values, {f.name: "system" for f in request.fields}
+
+        for persistence in ("session", "auto"):
+            with self.subTest(persistence=persistence):
+                obj = spec(self.root, usage="one_shot", persistence=persistence)
+                obj["scope"] += "/" + persistence
+                request = Request.parse(obj)
+                first = execute(request, self.vault, SaveUI())
+                second = FakeUI(value="DUMMY-MUST-NOT-REPLACE-SAVED")
+                execute(request, self.vault, second)
+                self.assertEqual(second.captures, 0)
+                ref = request.ref(request.fields[0])
+                self.assertEqual(first["refs"], [ref])
+                self.assertEqual(self.vault.status(request.scope), [{"ref": ref, "present": True}])
+                self.assertEqual(json.loads((self.root / "config.json").read_text(encoding="utf-8"))["provider"]["key"], FAKE)
+                # Stored consent still does not authorize another target.
+                obj["destination"]["path"] = str(self.root / "not-authorized.json")
+                denied = FakeUI(cancel=True)
+                self.assertEqual(execute(Request.parse(obj), self.vault, denied)["status"], "cancelled")
+                self.assertEqual(denied.captures, 1)
+                # An explicit refresh still requires new input.
+                obj["destination"]["path"] = str(self.root / "config.json")
+                obj["refresh"] = True
+                refreshed = FakeUI(cancel=True)
+                execute(Request.parse(obj), self.vault, refreshed)
+                self.assertEqual(refreshed.captures, 1)
+
+    def test_otp_does_not_reuse_saved_record(self):
+        obj = spec(self.root)
+        request = Request.parse(obj)
+        execute(request, self.vault, FakeUI())
+        obj["fields"][0]["kind"] = "otp"
+        ui = FakeUI(value="DUMMY-OTP-ONLY")
+        result = execute(Request.parse(obj), self.vault, ui)
+        self.assertEqual(ui.captures, 1)
+        self.assertEqual(result["refs"], [])
+        self.assertEqual(self.vault.get(request.ref(request.fields[0]))["value"], FAKE)
+
+    def test_delivery_cancel_does_not_undo_saved_credential(self):
+        class CancelProcessUI(FakeUI):
+            def run_process(self, destination, values):
+                raise InputError("cancelled")
+
+        obj = spec(self.root)
+        obj["destination"] = {"type": "process", "executable": sys.executable,
+                              "args": ["-c", "pass"], "cwd": str(self.root),
+                              "bindings": {"DUMMY_TEST_KEY": "key"}}
+        request = Request.parse(obj)
+        self.assertEqual(execute(request, self.vault, CancelProcessUI())["status"], "cancelled")
+        self.assertEqual(self.vault.status(request.scope),
+                         [{"ref": request.ref(request.fields[0]), "present": True}])
+
     def test_changed_purpose_requires_confirmation(self):
         obj = spec(self.root)
         execute(Request.parse(obj), self.vault, FakeUI())
@@ -278,9 +334,10 @@ raise SystemExit(cli.main(["doctor"]))
 import sys,os
 sys.path.insert(0,sys.argv[1])
 from secure_input_lib import ui,cli
-sys.platform="linux"
-os.environ.pop("DISPLAY",None)
-os.environ.pop("WAYLAND_DISPLAY",None)
+from types import SimpleNamespace
+# Model a headless Unix desktop without changing the Windows Python runtime.
+ui.os=SimpleNamespace(name="posix", environ={})
+ui.__import__=lambda name: SimpleNamespace(platform="linux")
 cli.dispatch=lambda args: ui.desktop_preflight()
 raise SystemExit(cli.main(["doctor"]))
 '''

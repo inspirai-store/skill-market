@@ -38,6 +38,8 @@ Windows 使用 `python` 和绝对 Windows 路径。POSIX 另提供可执行的 `
 - `fields` 为 1–16 个字段；`name` 是非密文字段标识，`label` 是弹框标签。
 - `kind` 为 `api_key`、`token`、`password`、`otp`；`usage` 为 `one_shot`、`reusable`、`unknown`。
 - `persistence` 可省略，默认为 `auto`；另支持 `session`、`system`。OTP 始终仅本次。
+- `usage` 描述凭据的使用寿命，而非这次任务的次数。长期 API Key 即使仅运行一次测试，也使用 `reusable`；`one_shot` 只控制未保存凭据的默认保存方式，不阻止复用用户已主动保存的非 OTP 记录。
+- `session` 默认不写入新的系统记录，也不删除或禁止复用原有记录；用户仍可在弹框中主动改为系统保存。`auto` 遇到已有记录时默认保持系统保存。弹框中的保存选择不会改写请求文件。
 - `refresh: true` 强制输入替换值；已保存值不会预填到输入框。`session` 不删除以前已经保存的凭据，删除需使用 `forget`。
 - 所有文件、可执行程序和工作目录使用绝对路径。程序通过参数数组直接启动，不能用 shell 命令字符串代替。参数也不能包含凭据原文。
 - `bindings` 的键是目标环境变量名或 JSON Pointer，值是字段 `name`，所有字段必须被绑定。
@@ -81,3 +83,5 @@ JSON 返回 `request_id`、`status` 和必要的结果字段，不返回用途�
 `result` 为 `written`、`filled` 或 `exited`。浏览器带 `remote_saved: unverified`。`refs` 只包含已选择系统保存的非原文引用。错误仅包含固定 `code`，不回传异常内容。
 
 初始化的 `doctor` 只检查依赖、桌面会话、系统后端和 Chromium 是否存在，不能代替真实凭据库和 GUI 验收。`status` 通过本地助手检查系统存储，不以元数据索引冒充真实存在。
+
+`refs` 是本次系统保存策略对应的引用，不是作用域内全部已存凭据清单。保存先于投递；`cancelled`、`failed` 或未返回最终状态不代表凭据未保存，也不证明目标没有运行。用户表示已经保存时，用原 `scope` 查询 `status`，不要要求重填。进程退出后须关闭“运行结果”窗口，命令才会返回。

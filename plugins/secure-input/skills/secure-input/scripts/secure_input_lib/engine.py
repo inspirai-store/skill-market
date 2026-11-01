@@ -40,7 +40,9 @@ def execute(request, vault, ui, browser_factory=BrowserSession):
     vault_available = vault.backend is not None
     unavailable = False
     for f in request.fields:
-        if f.kind == "otp" or f.usage == "one_shot":
+        # Usage chooses the initial lifetime, not whether an explicit earlier
+        # system-save choice can be reused. OTPs must never read stored values.
+        if f.kind == "otp":
             continue
         if not vault_available:
             unavailable = True
@@ -49,7 +51,7 @@ def execute(request, vault, ui, browser_factory=BrowserSession):
             record = vault.get(request.ref(f))
             if record:
                 existing[f.name] = record
-                if request.persistence == "auto" and f.usage != "one_shot":
+                if request.persistence == "auto":
                     policies[f.name] = "system"
         except InputError:
             unavailable, vault_available = True, False
