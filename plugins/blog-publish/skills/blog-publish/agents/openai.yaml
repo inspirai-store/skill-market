@@ -1,0 +1,4 @@
+interface:
+  display_name: "灵感小窝发布"
+  short_description: "通过 API 和 CLI 准备多媒体、管理草稿审核发布与隐藏撤回"
+  default_prompt: "使用 $blog-publish 准备媒体和文章草稿，展示包含媒体的固定版本，获得明确批准后单独发布。"

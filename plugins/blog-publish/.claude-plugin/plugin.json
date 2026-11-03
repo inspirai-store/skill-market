@@ -1,0 +1,20 @@
+{
+  "name": "blog-publish",
+  "version": "1.0.0",
+  "description": "灵感小窝博客发布 — 通过 API 和 CLI 准备图片视频音频、保存草稿、审核固定版本并单独发布，支持隐藏撤回和恢复",
+  "author": {
+    "name": "inspirai-store",
+    "url": "https://github.com/inspirai-store"
+  },
+  "repository": "https://github.com/inspirai-store/skill-market",
+  "license": "MIT",
+  "keywords": [
+    "blog",
+    "publishing",
+    "cli",
+    "markdown",
+    "media",
+    "workflow",
+    "cross-platform"
+  ]
+}
