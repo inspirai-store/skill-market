@@ -1,0 +1,12 @@
+{
+  "name": "victoria-observability",
+  "version": "1.0.0",
+  "description": "VictoriaLogs / VictoriaMetrics 只读观测：客户端初始化、MCP 接入、日志与指标查询和关联排障",
+  "author": {
+    "name": "inspirai-store",
+    "url": "https://github.com/inspirai-store"
+  },
+  "repository": "https://github.com/inspirai-store/skill-market",
+  "license": "MIT",
+  "keywords": ["victorialogs", "victoriametrics", "observability", "logs", "metrics", "mcp", "kubernetes", "read-only"]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Victoria 只读观测"
+  short_description: "通过 MCP 查询日志和指标，关联分析 Kubernetes、容器与主机故障"
+  default_prompt: "使用 $victoria-observability 对指定环境做只读排障，查询相关日志和指标并给出带证据的结论。"

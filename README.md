@@ -38,6 +38,7 @@ Then browse and install plugins:
 | [secure-input](./plugins/secure-input/) | 本地安全输入 - 弹框接收密钥，直接投递到进程、配置或网页，AI 只接收状态 |
 | [voice-studio](./plugins/voice-studio/) | 声音试听与配音 - 百炼 / MiniMax 音色筛选、A/B 比较、常用声线、缓存与音频导出 |
 | [blog-publish](./plugins/blog-publish/) | 博客发布 - 多媒体准备、草稿、固定版本审核、发布与撤回，支持 Windows/macOS CLI |
+| [victoria-observability](./plugins/victoria-observability/) | Victoria 只读观测 - 日志/指标关联分析、客户端初始化与 MCP 接入，支持 Codex 和 Claude Code 技能用法 |
 
 ## Install a specific plugin
 
